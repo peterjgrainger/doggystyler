@@ -4,6 +4,7 @@
 
 <main>
 	<h1>Doggy Styler!</h1>
+	<img src="img/dog-dry-resize.jpg" class="background" alt="background image" />
 </main>
 
 <style>
@@ -25,5 +26,10 @@
 		main {
 			max-width: none;
 		}
+	}
+
+	.background {
+		width: 100%;
+		margin: 0
 	}
 </style>
