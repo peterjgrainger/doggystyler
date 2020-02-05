@@ -73,14 +73,19 @@
 
 	h1 {
 		color: #ff3e00;
+		font-family: kimberly;
 		text-transform: uppercase;
-		font-size: 4em;
+		font-size: 2rem;
 		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
+		}
+
+		h1 {
+			font-size: 4rem;
 		}
 	}
 
