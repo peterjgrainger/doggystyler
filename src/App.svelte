@@ -27,7 +27,7 @@
 <section class="section--primary--alt">
     <div class="col-12 text--center">
     <h3>Want to be the first to access new content?</h3>
-		<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeJIkSpIBr12HdlfnimV-j8-uhAtYU_uoojIeJnmnM_uuaI8A/viewform?embedded=true" width="640" height="638" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+		<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeJIkSpIBr12HdlfnimV-j8-uhAtYU_uoojIeJnmnM_uuaI8A/viewform?embedded=true" width="400" height="638" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </div>
 </section>
 
