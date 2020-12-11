@@ -27,8 +27,7 @@
 <section class="section--primary--alt">
     <div class="col-12 text--center">
     <h3>Want to be the first to access new content?</h3>
-    <p>Sign up to be the first to know when I make something new!</p>
-		<a href="#" class="btn btn-transparent">Sign up</a>
+		<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeJIkSpIBr12HdlfnimV-j8-uhAtYU_uoojIeJnmnM_uuaI8A/viewform?embedded=true" width="640" height="638" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </div>
 </section>
 
