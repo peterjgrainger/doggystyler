@@ -101,7 +101,7 @@ img {
 header {
   color: white;
   background: #007ece;
-  padding: 10rem 0;
+  padding: 5rem 0;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -280,7 +280,7 @@ blockquote:before {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: #333 url("http://orbotix.wpengine.netdna-cdn.com/wp-content/uploads/2013/07/Faster-4H5B55491.jpg") no-repeat top center;
+  background: #333;
   background-size: cover;
   background-attachment: fixed;
   -webkit-filter: blur(5px);
