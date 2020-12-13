@@ -1,10 +1,9 @@
-
-<h1>Dog Grooming</h1>
-<h2>Customer Care Card</h2>
-
-<div class="content-container">
-  
+<div class="bg-image">
+  <h1>Dog Grooming</h1>
+  <h2>Customer Care Card</h2>
 </div>
+
+
 
 <div class="content-container">
   <form class="half">
@@ -43,7 +42,7 @@
 
 
 
-<div class="content-container">
+<div class="content-container bg-image-info">
     <div class="thirty-percent">
       <h2>Pet Information</h2>
       <div class="form-row">
@@ -308,5 +307,28 @@ p {
   justify-content: space-between;
   align-items: center;
 }
+
+.bg-image {
+  background: rgb(255,255,255);
+  background: -moz-linear-gradient(127deg, rgba(255,255,255,1) 0%, rgba(241,241,250,1) 49%);
+  background: -webkit-linear-gradient(127deg, rgba(255,255,255,1) 0%, rgba(241,241,250,1) 49%);
+  background: linear-gradient(127deg, rgba(255,255,255,1) 0%, rgba(241,241,250,1) 49%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#f1f1fa",GradientType=1);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bg-image-info {
+  background: rgb(255,255,255);
+  background: -moz-linear-gradient(127deg, rgba(255,255,255,1) 0%, rgba(241,241,250,1) 49%);
+  background: -webkit-linear-gradient(127deg, rgba(255,255,255,1) 0%, rgba(241,241,250,1) 49%);
+  background: linear-gradient(127deg, rgba(255,255,255,1) 0%, rgba(241,241,250,1) 49%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#f1f1fa",GradientType=1);  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+
 
 </style>

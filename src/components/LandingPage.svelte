@@ -14,12 +14,12 @@
 <section class="">
   <div class="container">
     <div class="col-3 text--center">
-      <img src="http://store.storeimages.cdn-apple.com/4044/as-images.apple.com/is/image/AppleInc/aos/published/images/H/D1/HD162/HD162?wid=800&hei=800&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1400749861094" alt="" class="details-img--ball"/>
+      <img src="customer-care-card.png" alt="" class="details-img--ball"/>
     </div>
     <div class="col-7 details">
-      <h3>Free Dog Report Cards</h3>
-      <p>Customisable report cards you can print off and give to customers</p>
-			 <a href="#" class="btn btn-transparent">Make yours now!</a>
+      <h3>Free Dog Report Card</h3>
+      <p>Report cards you can print off and give to customers</p>
+			 <a href="/customer-care-card" class="btn btn-transparent">Print yours now!</a>
     </div>
   </div>
 </section>
@@ -195,16 +195,6 @@ section p {
   }
 }
 
-.col-5 {
-  width: 30%;
-}
-@media (max-width: 34.375em) {
-  .col-5 {
-    width: 60%;
-    margin: 0;
-  }
-}
-
 .details {
   text-align: left;
 }
@@ -221,56 +211,6 @@ section p {
   }
 }
 
-
-@media (max-width: 43.75em) {
-  .features {
-    width: 100%;
-    margin: 0;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-}
-
-@media (max-width: 43.75em) {
-  .features i {
-    font-size: 1.5rem;
-    width: 2rem;
-    text-align: center;
-    margin: 0 0 1rem 0;
-    float: left;
-  }
-}
-
-@media (max-width: 43.75em) {
-  .features p {
-    margin-left: 3rem;
-  }
-}
-
-blockquote {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-blockquote:before {
-  display: inline-block;
-  color: #007ece;
-  font-size: 2rem;
-  content: '\201C';
-}
-
-@media (max-width: 43.75em) {
-  blockquote p {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 43.75em) {
-  blockquote cite {
-    font-size: .8rem;
-  }
-}
 
 .text--center {
   text-align: center;
