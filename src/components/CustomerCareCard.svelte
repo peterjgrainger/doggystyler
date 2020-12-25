@@ -1,9 +1,74 @@
+<script>
+import Dog from './Dog.svelte'
+
+
+  export let querystring;
+  let pageContent = {
+    businessName : 'Doggy Styler',
+    terms : 'In signing this card I understand the above named pet is left at my own risk. In an emergency, if a vet is required during the grooming process, the cost will be payable by me. I have read, understand and agree to these terms.'
+  }
+
+  function separateQueryString() {
+      (querystring || '').split('&')
+                         .map(queryParameter => queryParameter.split('='))
+                          .forEach(element => {
+                              pageContent[element[0]] = element[1]
+                          });
+  };
+
+  separateQueryString()
+
+  function copyLinkText() {
+    /* Get the text field */
+    var copyText = `${document.location.host}${document.location.pathname}?businessName=${pageContent.businessName}&terms=${pageContent.terms}`
+    // Create new element
+    var el = document.createElement('textarea');
+    // Set value (string to be copied)
+    el.value = copyText;
+    // Set non-editable to avoid focus and move outside of view
+    el.setAttribute('readonly', '');
+    el.style = {position: 'absolute', left: '-9999px'};
+    document.body.appendChild(el);
+    // Select text inside element
+    el.select();
+    // Copy text to clipboard
+    document.execCommand('copy');
+    // Remove temporary element
+    document.body.removeChild(el);
+}
+
+function print() {
+  window.print()
+}
+
+</script>
+<div class="full-page">
+<div class="logo">
+  <a href="/">
+  <Dog/>
+  Doggy Styler
+  </a>
+</div>
+<header class="share-link center">
+  <div class="container">
+    <h1>Customer Care Card</h1>
+    <h3>(works best printing A5 landscape, business name and terms can be changed)</h3>
+    <h2> 
+      <button class="btn btn-transparent" on:click={copyLinkText}>Copy Link</button>
+      <button class="btn btn-transparent" on:click={print}>Print</button></h2>
+  </div>
+</header>
+
+<div class="margin-box">
+
 <div class="bg-image">
-  <h1>Dog Grooming</h1>
+  <h1>
+    {#if pageContent.businessName}
+      <input bind:value={pageContent.businessName} minlength="1" maxlength="15">
+    {/if}
+  </h1>
   <h2>Customer Care Card</h2>
 </div>
-
-
 
 <div class="content-container">
   <form class="half">
@@ -92,9 +157,8 @@
 
 <div class="content-container">
   <p class="language">
-    In signing this card I understand the above named pet is left at my own risk. In an emergency if a vet is required during the grooming process that the
-    cost will be payable by me. I have read and understand and agree to these terms.
-  </p>
+    <textarea> { pageContent.terms } </textarea></p>
+
 </div>
 <div class="content-container">
   <div class="signature">
@@ -104,28 +168,85 @@
       </p>
     </div>
     <div class="date-line">
-      <p>
-        Date:
-      </p>
     </div>
   </div>
 </div>
 
+</div>
 
+</div>
 
 <style>
+
+.logo {
+    display: none;
+  }
+
+@media(min-width: 43.75em) {
+  .logo {
+    display: block;
+    width: 5em;
+    text-align: center;
+  }
+}
+
+
+header h1 {
+  font-size: 3rem;
+  /* margin: 0 0 1rem; */
+}
+@media (max-width: 43.75em) {
+  header h1 {
+    font-size: 2rem;
+  }
+}
+
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 900px;
+}
+
+@media print {
+  .share-link {
+    display: none;
+  }
+}
+
+.margin-box {
+    margin-top: 4em;
+
+    
+  }
+
+@media print {
+  .margin-box {
+    margin-top: 0em;
+  }
+}
+
+@media (min-width: 43.75em) {
+  .margin-box {
+    margin: 4em 4em 4em 4em;
+    border-width:0.5px; 
+    border-style:solid;
+  }
+}
+
+
+
+textarea { 
+        width:100%; 
+    } 
   * {
   box-sizing: border-box;
 }
 
-body,
-html {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  font-family: sans-serif;
+.full-page {
+  font-family: roboto;
 }
+
 h1 {
   display: block;
   font-size: 2em;
@@ -155,36 +276,6 @@ p {
   font-size: 0.9em;
 }
 
-.ach-header {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  align-items: center;
-}
-.yourCo-logo-container {
-  width: 50%;
-  display: flex;
-}
-.company-logo-container {
-  width: 50%;
-  display: flex;
-  justify-content: flex-end;
-}
-.yourCo-logo-container > img,
-.company-logo-container > img {
-  width: 75%;
-  height: 75%;
-}
-.document-title {
-  display: flex;
-  justify-content: center;
-  color: #00795b;
-}
-.document-subtitle {
-  display: flex;
-  justify-content: center;
-  color: #00795b;
-}
 .content-container {
   display: flex;
   flex-wrap: wrap;
@@ -192,21 +283,7 @@ p {
   margin: 10px 0;
 }
 
-.two-thirds {
-  flex: 0 1 60%;
-  min-height: 100%;
-  min-width: 60%;
-  flex-direction: column;
-}
 
-.one-third {
-  flex: 0 1 40%;
-  display: flex;
-  height: 100%;
-  max-width: 40%;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
 
 .thirty-percent {
   flex: 0 1 30%;
@@ -226,45 +303,13 @@ p {
   align-items: flex-start;
 }
 
-.half-containers {
-  flex: 0 0 100%;
-  max-height: 50%;
-  min-height: 50%;
-  max-width: 100%;
-  background: #0BDA51;
-  border: 1px solid red;
-  padding: .5em;
-  overflow: hidden;
-}
 
 .language {
   display: flex;
   width: 95%;
   margin: 0;
 }
-.page-break {
-  display: flex;
-  width: 97%;
-  background-color: #00795b;
-  color: #fff;
-  justify-content: center;
-  margin: 10px 0;
-}
-#account-type {
-  flex-grow: 0;
-}
-.form-section {
-  width: 97%;
-  display: flex;
-  flex-wrap: wrap;
-}
-.form-section input {
-  flex-grow: 1;
-}
-.form-section label {
-  padding: 0 10px;
-  font-size: 0.9em;
-}
+
 .form-row {
   display: flex;
   width: 98%;
@@ -288,25 +333,7 @@ p {
   width: 30%;
   border-bottom: 0.5px solid black;
 }
-.signature-comment {
-  width: 100%;
-  font-weight: lighter;
-  font-size: 0.7em;
-  font-style: italic;
-}
-.instructions {
-  display: flex;
-  justify-content: center;
-  width: 98%;
-  color: #00795b;
-  font-weight: 700;
-}
-.form-print {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 .bg-image {
   background: rgb(255,255,255);
@@ -317,6 +344,11 @@ p {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  text-align: cen;
+}
+
+.center{
+  text-align: center;
 }
 
 .bg-image-info {
@@ -327,6 +359,60 @@ p {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#f1f1fa",GradientType=1);  position: relative;
   z-index: 1;
   overflow: hidden;
+}
+
+input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background: rgba(0, 0, 0, 0);
+  padding: 0;
+  margin: 0;
+}
+
+textarea {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background: rgba(0, 0, 0, 0);
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  resize: none;
+  height: 3.5em;
+}
+
+
+.btn {
+  display: inline-block;
+  margin: 1rem 0;
+  color: white;
+  font-weight: 500;
+  font-size: 1.3rem;
+  background: #007ece;
+  letter-spacing: .02em;
+  border: none;
+  border-radius: 5px;
+  padding: .8rem 1rem .9rem;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 43.75em) {
+  .btn {
+    padding: .5rem .7rem .6rem;
+    font-size: 1rem;
+  }
+}
+.btn:hover {
+  background: #008ee8;
+  color: #fff;
+}
+.btn:focus, .btn:active, .btn:focus:active {
+  background: #006eb5;
+  border-color: #006eb5;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5) inset;
 }
 
 

@@ -19,7 +19,7 @@
     <div class="col-7 details">
       <h3>Free Dog Report Card</h3>
       <p>Report cards you can print off and give to customers</p>
-			 <a href="/customer-care-card" class="btn btn-transparent">Print yours now!</a>
+			 <a href="/customer-care-card" class="btn">Print yours now!</a>
     </div>
   </div>
 </section>
