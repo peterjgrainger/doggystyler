@@ -4,8 +4,7 @@ import Dog from './Dog.svelte'
 
   export let querystring;
   let pageContent = {
-    businessName : 'Doggy Styler',
-    terms : 'In signing this card I understand the above named pet is left at my own risk. In an emergency, if a vet is required during the grooming process, the cost will be payable by me. I have read, understand and agree to these terms.'
+    businessName : 'Dog Grooming Customer Care Card',
   }
 
   function separateQueryString() {
@@ -20,7 +19,7 @@ import Dog from './Dog.svelte'
 
   function copyLinkText() {
     /* Get the text field */
-    var copyText = `${document.location.host}${document.location.pathname}?businessName=${pageContent.businessName}&terms=${pageContent.terms}`
+    var copyText = `${document.location.host}${document.location.pathname}?businessName=${pageContent.businessName}`
     // Create new element
     var el = document.createElement('textarea');
     // Set value (string to be copied)
@@ -52,7 +51,7 @@ function print() {
 <header class="share-link center">
   <div class="container">
     <h1>Customer Care Card</h1>
-    <h3>(works best printing A5 landscape, business name and terms can be changed)</h3>
+    <h3>(Prints 2 cards on A4 paper. Change the title of the card by clicking on it)</h3>
     <h2> 
       <button class="btn btn-transparent" on:click={copyLinkText}>Copy Link</button>
       <button class="btn btn-transparent" on:click={print}>Print</button></h2>
@@ -61,20 +60,17 @@ function print() {
 
 <div class="margin-box">
 
-<div class="bg-image">
+<div class="bg-image-title">
   <h1>
-    {#if pageContent.businessName}
-      <input bind:value={pageContent.businessName} minlength="1" maxlength="15">
-    {/if}
+      <input bind:value={pageContent.businessName}/>
   </h1>
-  <h2>Customer Care Card</h2>
 </div>
 
 <div class="content-container">
   <form class="half">
     <h2>Owners Information</h2> 
     <div class="form-row">
-      <div><p>Owner:&nbsp;&nbsp;&nbsp;</p></div>
+      <div><p>Name:&nbsp;&nbsp;&nbsp;</p></div>
       <div class="signature-line"/>
     </div>
     <div class="form-row">
@@ -85,13 +81,14 @@ function print() {
       <div><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
       <div class="signature-line"/>
     </div>
+
   </form>
   <form class="half">
       <div class="form-row">
         <div><p>&nbsp;</p></div>
       </div>
       <div class="form-row">
-        <div><p>Telephone:&nbsp;</p></div>
+        <div><p>Telephone☎:&nbsp;</p></div>
         <div class="signature-line"/>
       </div>
       <div class="form-row">
@@ -99,7 +96,7 @@ function print() {
         <div class="signature-line"/>
       </div>
       <div class="form-row">
-        <div><p>Vets&nbsp;Tel:&nbsp;</p></div>
+        <div><p>Vets&nbsp;Tel☎:&nbsp;</p></div>
         <div class="signature-line"/>
       </div>
   </form>
@@ -115,17 +112,6 @@ function print() {
         <div class="signature-line"/>
       </div>
       <div class="form-row">
-        <div><p>Colour:&nbsp;</p></div>
-        <div class="signature-line"/>
-      </div>
-      <div class="form-row">
-        <div><p>Behaviour:&nbsp;</p></div>
-        <div class="signature-line"/>
-      </div>
-    </div>
-    <div class="thirty-percent">
-      <h2></h2>
-      <div class="form-row">
         <div><p>Age:&nbsp;</p></div>
         <div class="signature-line"/>
       </div>
@@ -135,10 +121,10 @@ function print() {
       </div>
       <div class="form-row">
         <div><p>Sex:&nbsp;</p></div>
-        <div class="signature-line"/>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;male&nbsp;/&nbsp;female</p>    
       </div> 
     </div>
-  <form class="thirty-percent">
+  <div class="thirty-percent">
     <h2>Medical History</h2>
     <div class="form-row">
       <p>Allergies:&nbsp;</p>
@@ -149,27 +135,179 @@ function print() {
       <div class="signature-line"/>
     </div>
     <div class="form-row">
-      <p>Spayed:&nbsp;</p>
+      <p>Spayed/Neutered:</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;/&nbsp;N</p>
+    </div>
+    <div class="form-row">
+      <p>Microchipped:&nbsp;</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;/&nbsp;N</p>    
+    </div>
+
+  </div>
+  <div class="thirty-percent">
+    <h2>Grooming</h2>
+    <div class="form-row">
+      <div><p>Blades:&nbsp;</p></div>
       <div class="signature-line"/>
+    </div>
+    <div class="form-row">
+      <div><p>Style:&nbsp;</p></div>
+      <div class="signature-line"/>
+    </div>
+    <div class="form-row">
+      <div><p>Time&nbsp;req.:&nbsp;</p></div>
+      <div class="signature-line"/>
+    </div>
+    <div class="form-row">
+      <div><p class="center">Collect&nbsp;/&nbsp;Deliver</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="content-container">
+  <form class="full">
+    <h2>Behaviour</h2>
+    <div class="form-row-behaviour">
+      <div>Easy</div>
+      <div>Fair</div>
+      <div>Hard</div>
+      <div>Nervous</div>
+      <div>Hyper</div>
+      <div>Old</div>
+      <div>Heavy</div>
+      <div>Biter</div>
+      <div>Noisy</div>
+      <div>Soiler</div>
+      <div>Banned</div>
     </div>
   </form>
 </div>
 
-<div class="content-container">
-  <p class="language">
-    <textarea> { pageContent.terms } </textarea></p>
+<div class="print-only">
 
+
+<div class="bg-image-title">
+  <h1>
+      <input bind:value={pageContent.businessName}/>
+  </h1>
 </div>
+
 <div class="content-container">
-  <div class="signature">
-    <div class="signature-line">
-      <p>
-        Owner's Signature:
-      </p>
+  <form class="half">
+    <h2>Owners Information</h2> 
+    <div class="form-row">
+      <div><p>Name:&nbsp;&nbsp;&nbsp;</p></div>
+      <div class="signature-line"/>
     </div>
-    <div class="date-line">
+    <div class="form-row">
+      <div><p>Address:&nbsp;</p></div>
+      <div class="signature-line"/>
+    </div>
+    <div class="form-row">
+      <div><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+      <div class="signature-line"/>
+    </div>
+
+  </form>
+  <form class="half">
+      <div class="form-row">
+        <div><p>&nbsp;</p></div>
+      </div>
+      <div class="form-row">
+        <div><p>Telephone☎:&nbsp;</p></div>
+        <div class="signature-line"/>
+      </div>
+      <div class="form-row">
+        <div><p>Vets&nbsp;Name:&nbsp;</p></div>
+        <div class="signature-line"/>
+      </div>
+      <div class="form-row">
+        <div><p>Vets&nbsp;Tel☎:&nbsp;</p></div>
+        <div class="signature-line"/>
+      </div>
+  </form>
+</div>
+
+
+<div class="content-container bg-image-info">
+    <div class="thirty-percent">
+      <h2>Pet Information</h2>
+      <div class="form-row">
+        <div><p>Name:&nbsp;</p></div>
+        <div class="signature-line"/>
+      </div>
+      <div class="form-row">
+        <div><p>Age:&nbsp;</p></div>
+        <div class="signature-line"/>
+      </div>
+      <div class="form-row">
+        <div><p>Breed:&nbsp;</p></div>
+        <div class="signature-line"/>
+      </div>
+      <div class="form-row">
+        <div><p>Sex:&nbsp;</p></div>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;male&nbsp;/&nbsp;female</p>    
+      </div> 
+    </div>
+  <div class="thirty-percent">
+    <h2>Medical History</h2>
+    <div class="form-row">
+      <p>Allergies:&nbsp;</p>
+      <div class="signature-line"/>
+    </div>
+    <div class="form-row">
+      <p>Vaccinated:&nbsp;</p>
+      <div class="signature-line"/>
+    </div>
+    <div class="form-row">
+      <p>Spayed/Neutered:</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;/&nbsp;N</p>
+    </div>
+    <div class="form-row">
+      <p>Microchipped:&nbsp;</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;/&nbsp;N</p>    
+    </div>
+
+  </div>
+  <div class="thirty-percent">
+    <h2>Grooming</h2>
+    <div class="form-row">
+      <div><p>Blades:&nbsp;</p></div>
+      <div class="signature-line"/>
+    </div>
+    <div class="form-row">
+      <div><p>Style:&nbsp;</p></div>
+      <div class="signature-line"/>
+    </div>
+    <div class="form-row">
+      <div><p>Time&nbsp;req.:&nbsp;</p></div>
+      <div class="signature-line"/>
+    </div>
+    <div class="form-row">
+      <div><p class="center">Collect&nbsp;/&nbsp;Deliver</p></div>
     </div>
   </div>
+</div>
+
+<div class="content-container">
+  <form class="full">
+    <h2>Behaviour</h2>
+    <div class="form-row-behaviour">
+      <div>Easy</div>
+      <div>Fair</div>
+      <div>Hard</div>
+      <div>Nervous</div>
+      <div>Hyper</div>
+      <div>Old</div>
+      <div>Heavy</div>
+      <div>Biter</div>
+      <div>Noisy</div>
+      <div>Soiler</div>
+      <div>Banned</div>
+    </div>
+  </form>
+</div>
+
 </div>
 
 </div>
@@ -177,7 +315,16 @@ function print() {
 </div>
 
 <style>
+.print-only {
+  display: none
+}
 
+@media print {
+  .print-only {
+    margin-block-start: 4em;
+    display: block;
+  }
+}
 .logo {
     display: none;
   }
@@ -235,16 +382,8 @@ header h1 {
 }
 
 
-
-textarea { 
-        width:100%; 
-    } 
-  * {
-  box-sizing: border-box;
-}
-
 .full-page {
-  font-family: roboto;
+  font-family: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1 {
@@ -303,34 +442,31 @@ p {
   align-items: flex-start;
 }
 
-
-.language {
+.full {
+  flex: 0 1 100%;
   display: flex;
-  width: 95%;
-  margin: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
+
+
 
 .form-row {
   display: flex;
   width: 98%;
   margin: 2px 0;
 }
-.signature {
+
+.form-row-behaviour {
+  margin-block-start: 1em;
   display: flex;
-  flex-wrap: nowrap;
-  width: 95%;
-}
-.signature p {
-  margin: 10px 0 0;
+  width: 98%;
+  justify-content: space-between;
 }
 .signature-line {
   justify-content: flex-start;
-  width: 70%;
-  border-bottom: 0.5px solid black;
-}
-.date-line {
-  justify-content: flex-start;
-  width: 30%;
+  width: 95%;
   border-bottom: 0.5px solid black;
 }
 
@@ -344,7 +480,15 @@ p {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  text-align: cen;
+  text-align: center;
+}
+
+.bg-image-title {
+  background: rgba(241,241,250,1);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-align: center;
 }
 
 .center{
@@ -369,21 +513,10 @@ input {
   background: rgba(0, 0, 0, 0);
   padding: 0;
   margin: 0;
+  text-align: center;
+  width: 100%;
+  height: 2em
 }
-
-textarea {
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: hidden;
-  background: rgba(0, 0, 0, 0);
-  padding: 0;
-  margin: 0;
-  overflow: auto;
-  resize: none;
-  height: 3.5em;
-}
-
 
 .btn {
   display: inline-block;

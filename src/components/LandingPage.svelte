@@ -17,7 +17,7 @@
       <img src="customer-care-card.png" alt="" class="details-img--ball"/>
     </div>
     <div class="col-7 details">
-      <h3>Free Dog Report Card</h3>
+      <h3>Free Customer Care Card</h3>
       <p>Report cards you can print off and give to customers</p>
 			 <a href="/customer-care-card" class="btn">Print yours now!</a>
     </div>
