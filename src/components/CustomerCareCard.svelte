@@ -462,7 +462,7 @@ p {
   margin-block-start: 1em;
   display: flex;
   width: 98%;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .signature-line {
   justify-content: flex-start;
